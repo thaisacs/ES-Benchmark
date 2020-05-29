@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p experiment
-cd experiment
+mkdir -p results
+cd results
 
 /usr/bin/time -o CG-A-TIME.out -p  mpirun -n 2 ../../bin/cg.A.x 1> CG-A.out 2> CG-A.err
 /usr/bin/time -o CG-B-TIME.out -p  mpirun -n 2 ../../bin/cg.B.x 1> CG-B.out 2> CG-B.err
