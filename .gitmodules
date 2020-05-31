@@ -1,0 +1,3 @@
+[submodule "pyranda"]
+	path = pyranda
+	url = https://github.com/thaisacs/pyranda
