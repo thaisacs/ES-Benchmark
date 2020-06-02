@@ -1,6 +1,0 @@
-install_location_mpi4py/
-build/
-conf/mpiconfig.pyc
-conf/mpidistutils.pyc
-conf/mpiregexes.pyc
-conf/mpiscanner.pyc
