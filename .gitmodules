@@ -1,0 +1,6 @@
+[submodule "NPB3.4-MPI"]
+	path = NPB3.4-MPI
+	url = https://github.com/thaisacs/NPB3.4-MPI
+[submodule "pyranda"]
+	path = pyranda
+	url = https://github.com/thaisacs/pyranda
