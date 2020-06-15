@@ -1,0 +1,26 @@
+Warning: Permanently added '172.31.76.114' (ECDSA) to the list of known hosts.
+[ip-172-31-78-128:09831] 1 more process has sent help message help-mpi-btl-base.txt / btl:no-nics
+[ip-172-31-78-128:09831] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+	Command being timed: "mpirun --hostfile hostfile -np 2 ../bin/sp.A.x"
+	User time (seconds): 143.42
+	System time (seconds): 0.18
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:24.97
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 97300
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 17
+	Minor (reclaiming a frame) page faults: 25769
+	Voluntary context switches: 1201
+	Involuntary context switches: 1217
+	Swaps: 0
+	File system inputs: 3408
+	File system outputs: 16488
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

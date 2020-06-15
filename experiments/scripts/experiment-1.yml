@@ -1,0 +1,7 @@
+benchmark: npb
+vm_type: t2.micro
+nodes: 2
+apps:
+  - bt.A
+  - bt.B
+  - lu.A
