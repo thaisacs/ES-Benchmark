@@ -1,11 +1,20 @@
 #!/bin/bash
 
-path=$PWD/pi_csvs
+mkdir charts
+cd experimental_results
+path=$PWD
 
-cd $path
-
-for file in $path/*; do
-  only_app="${file##*/}"
-  app=$(echo $only_app | cut -d '-' -f 1)
-  $(python3 ../chart.py $app $PWD/$app*)
+for app in *; do
+  apps=""
+  for cfg in $app/*; do
+    only_cfg="${cfg##*/}"
+    for date in $cfg/*; do
+      for file in $date/*; do
+        if [ "${file##*.}" = "csv" ]; then
+          apps="$apps $file"
+        fi
+      done
+    done
+  done
+  python3 ../chart.py $app $apps
 done
