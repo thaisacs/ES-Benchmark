@@ -1,0 +1,43 @@
+---
+- name: "Secutiry group playbook"
+  hosts: localhost 
+  gather_facts: false
+  tasks:
+    #- name: "Create placement group in ec2 us-east-1"
+    #  ec2_placement_group:
+    #    name: npb-thais-spread
+    #    aws_secret_key: "{{lookup('file', '~/.clap/private/mo833-3.pem') }}"
+    #    aws_access_key: "{{lookup('file', '~/.clap/private/mo833-3.pub') }}"
+    #    region: "us-east-1"
+    #    strategy: spread
+    #    state: present
+    #  register: "resultado_da_criacao"
+
+    #- name: "Print creation results dictionary"
+    #  debug:
+    #    msg: "{{ resultado_da_criacao }}"
+
+    - name: "Create security group in ec2 us-east-1"
+      ec2_group:
+        aws_secret_key: "{{lookup('file', '~/.clap/private/mo833-3.pem') }}"
+        aws_access_key: "{{lookup('file', '~/.clap/private/mo833-3.pub') }}"
+        region: us-east-1
+        name: "mpi_npb_group_teste"
+        state: "present"
+        description: my security group
+        rules:
+        - proto: tcp
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+        - proto: all
+          group_name: mpi_npb_group_teste
+          ports:
+            - 50
+            - 100
+
+      register: "resultado_da_criacao"
+
+    - name: "Print creation results dictionary"
+      debug:
+        msg: "{{ resultado_da_criacao }}"

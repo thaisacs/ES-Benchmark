@@ -9,6 +9,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 matplotlib.pyplot.figure(figsize=(15,5))
 
 paramount_iteration = {}
+labels = []
 #def read_output(filename):
 #  paramount_iteration = []
 #  x = []
@@ -46,6 +47,7 @@ def read_output(filename):
                         (paramount_iteration[key][date]).append(float(row[4]))
 
 def make_array(results):
+    label_index = 0
     for i in results:
         values = []
 
@@ -64,23 +66,36 @@ def make_array(results):
                 values[k][m] = results[i][j][k]
             m += 1
 
-        my_plot(values)
+        my_plot(values, label_index)
+        label_index += 1
 
-def my_plot(results):
+def my_plot(results, label_index):
     m = []
     d = []
     x = []
 
     for i in range(0, len(results)):
         m.append(statistics.mean(results[i]))
-        d.append(statistics.stdev(results[i]))
-        x.append(i)
+        if(len(results[0]) == 1):
+            d.append(0)
+        else:
+            d.append(statistics.stdev(results[i]))
+        x.append(i+1)
 
-    matplotlib.pyplot.errorbar(x, m, d, label="2x")
+    matplotlib.pyplot.errorbar(x, m, d, label=labels[label_index])
 
 
 for i in sys.argv[2:len(sys.argv)]:
+    labels.append(i.split('/')[1])
     read_output(i)
+
+labels_clean = []
+labels_clean.append(labels[0])
+for i in range(1, len(labels)):
+    if(labels[i] != labels[i-1]):
+        labels_clean.append(labels[i])
+
+labels = labels_clean
 
 make_array(paramount_iteration)
 

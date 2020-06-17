@@ -17,16 +17,22 @@ init_cluster() {
 args=("$@")
 
 arg_parse
-#init_cluster
+init_cluster
 
 for ((i=3; i<len; i++)); do
   results_dir=experimental_results/${args[$i]}/${type_vm}-${num_vm}/${now}/$(date +"%m-%d-%y-%T")
   mkdir -p ${results_dir}
-  #clapp cluster action ${cluster_id} ${bench_name}-group run --extra "app_name=${args[$i]}" "num_np=${num_vm}"
-  #clapp cluster action ${cluster_id} ${bench_name}-group fetch-results
-  #results=node-*/home/ubuntu/*/experiments/results/*
-  #mv ${results} ${results_dir}
-  #rm -r ${results}
+  clapp cluster action ${cluster_id} ${bench_name}-group run --extra "app_name=${args[$i]}" "num_np=${num_vm}"
+  clapp cluster action ${cluster_id} ${bench_name}-group fetch-results
+  results=node-*/home/ubuntu/*/experiments/results/*
+  mv ${results} ${results_dir}
+  rm -r ${results}
 done
 
-#clapp cluster stop ${cluster_id}
+clapp cluster stop ${cluster_id}
+
+
+
+
+#clapp cluster start cluster-npb.comp-t3.large-2x --extra "my_ip=172.31.4.213"
+#clapp cluster stop cluster-104
