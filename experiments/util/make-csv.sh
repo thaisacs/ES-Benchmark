@@ -4,7 +4,7 @@ my_csv=$PWD/experimental_results.summary.csv
 
 echo "test-case,cfg,date,total_time-time,total_time-main,beta,avg-PIs,n-PIs,1st-PI,2nd-PI,avg(2-6),avg(2-11)" > $my_csv
 
-cd experimental_results
+cd ../experimental_results
 
 for app in *; do
   for cfg in $app/*; do

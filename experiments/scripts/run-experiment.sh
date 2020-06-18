@@ -22,11 +22,11 @@ init_cluster
 
 dest="~/Dev/ES-Benchmark/experiments/scripts"
 
-for ((i=4; i<len; i++)); do
+for ((i=5; i<len; i++)); do
   results_dir=experimental_results/${args[$i]}/${type_vm}-${num_vm}/${now}/$(date +"%m-%d-%y-%T")
   mkdir -p ${results_dir}
-  clapp cluster action ${cluster_id} ${bench_name}-group run --extra "app_name=${args[$i]}" "num_np=${num_vm}" "remote_dir=${dest}"
-  clapp cluster action ${cluster_id} ${bench_name}-group fetch-results
+  clapp cluster action ${cluster_id} ${bench_name}-group run --extra "app_name=${args[$i]}" "num_np=${num_vm}"
+  clapp cluster action ${cluster_id} ${bench_name}-group fetch-results "remote_dir=${dest}"
   results=node-*/home/ubuntu/*/experiments/results/*
   mv ${results} ${results_dir}
 done
