@@ -1,5 +1,6 @@
 import yaml
 import os
+import sys
 
 def read_configs(filename):
     with open(filename) as file:
@@ -7,7 +8,7 @@ def read_configs(filename):
     return configs
 
 def make_cmd(configs):
-    cmd = './run-experiment.sh ' + configs['efs_ip']
+    cmd = './run.sh ' + configs['efs_ip'] + ' ' + configs['dir']
     cmd += ' ' + configs['vm_type'] + ' ' + str(configs['nodes'])
     cmd += ' ' + configs['benchmark'] + ' '
 
@@ -17,10 +18,8 @@ def make_cmd(configs):
     return cmd
 
 def main():
-    configs = read_configs('experiment-1.yml')
-
+    configs = read_configs(sys.argv[1])
     cmd = make_cmd(configs)
-
     os.system(cmd)
 
 if __name__ == "__main__":

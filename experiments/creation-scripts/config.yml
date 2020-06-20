@@ -1,0 +1,10 @@
+placement_group:
+  name: mpi-group-pg-thais
+  strategy: cluster
+security_group:
+  name: mpi-group-sg-thais
+efs:
+  name: efs-thais
+  tag: efs-tag-thais
+pub_key: ~/.clap/private/mo833-3.pub
+pem_key: ~/.clap/private/mo833-3.pem

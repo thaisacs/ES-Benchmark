@@ -1,0 +1,13 @@
+benchmark: npb
+vm_type: m5.large
+nodes: 2
+apps:
+  - bt.B
+  - bt.C
+  - ft.C
+  - cg.C
+  - sp.B
+  - sp.C
+  - lu.C
+efs_ip: 172.31.11.5
+dir: "~/Dev/ES-Benchmark/experiments/scripts"

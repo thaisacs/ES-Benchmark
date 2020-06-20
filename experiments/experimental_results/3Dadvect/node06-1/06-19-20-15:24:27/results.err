@@ -1,0 +1,2 @@
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0

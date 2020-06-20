@@ -44,7 +44,6 @@ def make_array(results):
             for l in range(0, len(results[i])):
                 values[j].append(0)
 
-
         m = 0
         for j in results[i]:
             for k in range(0, len(results[i][key])):
@@ -89,3 +88,4 @@ matplotlib.pyplot.xlabel('Iteração')
 matplotlib.pyplot.ylabel('Tempo de Execução (s)')
 matplotlib.pyplot.legend(loc="upper right")
 matplotlib.pyplot.savefig("../charts/"+sys.argv[1]+".png", dpi=150)
+#matplotlib.pyplot.savefig("../charts/"+sys.argv[1]+".pdf", bbox_inches='tight')
