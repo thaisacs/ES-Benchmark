@@ -1,0 +1,10 @@
+benchmark: pyranda
+vm_type: m4.large
+nodes: 8
+apps:
+  - gatech
+  - 3Dadvect
+efs_ip: 172.31.15.117
+dir: "~/Dev/ES-Benchmark/experiments/"
+# dir é ocaminho até a pasta ES-Benchmark/experiments
+#    -> resultados irão ser salvos dentro de ES-Benchmark/experiments/experimental_results

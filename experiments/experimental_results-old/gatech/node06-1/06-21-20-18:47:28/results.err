@@ -1,6 +1,0 @@
-/home/thaiscamachoo/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:390: RuntimeWarning: invalid value encountered in divide
-  self.pyranda.variables[velocity[uu]].data[0,:,:]*mag0/magF,
-/home/thaiscamachoo/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:437: RuntimeWarning: invalid value encountered in divide
-  self.pyranda.variables[velocity[uu]].data[-1,:,:]*mag0/magF,
-/home/thaiscamachoo/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:295: RuntimeWarning: invalid value encountered in divide
-  self.pyranda.variables[velocity[uu]].data[:,0,:]*mag0/magF,

@@ -1,8 +1,0 @@
-[node06:02741] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
-[node06:02741] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-/home/thaiscamachoo/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaEq.py:1: RuntimeWarning: invalid value encountered in sqrt
-  ################################################################################
-/home/thaiscamachoo/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaEq.py:1: RuntimeWarning: invalid value encountered in sqrt
-  ################################################################################
-/home/thaiscamachoo/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaEq.py:1: RuntimeWarning: invalid value encountered in sqrt
-  ################################################################################
