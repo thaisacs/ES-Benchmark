@@ -6,7 +6,7 @@ import sys
 
 from matplotlib.backends.backend_pdf import PdfPages
 
-matplotlib.pyplot.figure(figsize=(15,5))
+matplotlib.pyplot.figure(figsize=(15,15))
 
 paramount_iteration = {}
 labels = []

@@ -1,0 +1,29 @@
+Warning: Permanently added '172.31.55.220' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.56.206' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.58.29' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.57.102' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.51.227' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.63.23' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.56.126' (ECDSA) to the list of known hosts.
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:390: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[0,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:390: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[0,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:390: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[0,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:390: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[0,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:437: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[-1,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:437: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[-1,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:437: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[-1,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:437: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[-1,:,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:295: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[:,0,:]*mag0/magF,
+/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaBC.py:295: RuntimeWarning: invalid value encountered in divide
+  self.pyranda.variables[velocity[uu]].data[:,0,:]*mag0/magF,
+[ip-172-31-54-149:11838] 7 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[ip-172-31-54-149:11838] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

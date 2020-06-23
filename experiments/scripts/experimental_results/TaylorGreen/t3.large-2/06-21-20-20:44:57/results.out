@@ -1,0 +1,199 @@
+--------------------------------------------------------------------------
+[[9819,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: ip-172-31-49-171
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+ 
+                                 _       
+                                | |      
+ _ __  _   _ _ __ __ _ _ __   __| | __ _ 
+| '_ \| | | | '__/ _` | '_ \ / _` |/ _` |
+| |_) | |_| | | | (_| | | | | (_| | (_| |
+| .__/ \__, |_|  \__,_|_| |_|\__,_|\__,_|
+| |     __/ |                            
+|_|    |___/                             
+
+Version 1.0
+
+Copyright (c) 2020 Lawrence Livermore National Laboratory (LLNL-CODE-749864)
+All rights reserved. 
+For details about use and distribution, please read: pyranda/LICENSE
+
+ 
+                                 _       
+                                | |      
+ _ __  _   _ _ __ __ _ _ __   __| | __ _ 
+| '_ \| | | | '__/ _` | '_ \ / _` |/ _` |
+| |_) | |_| | | | (_| | | | | (_| | (_| |
+| .__/ \__, |_|  \__,_|_| |_|\__,_|\__,_|
+| |     __/ |                            
+|_|    |___/                             
+
+Version 1.0
+
+Copyright (c) 2020 Lawrence Livermore National Laboratory (LLNL-CODE-749864)
+All rights reserved. 
+For details about use and distribution, please read: pyranda/LICENSE
+
+Adding variables: tke
+Adding variables: tauxz
+Adding variables: tauxy
+Adding variables: tauxx
+Adding variables: tauzz
+Adding variables: cs
+Adding variables: vx
+Adding variables: vy
+Adding variables: vz
+Adding variables: tauyy
+Adding variables: tauyz
+Adding variables: taudia
+Adding variables: rhow
+Adding variables: rhov
+Adding variables: rhou
+Adding variables: S
+Adding variables: rho
+Adding variables: dt
+Adding variables: wz
+Adding variables: wy
+Adding variables: wx
+Adding variables: enst
+Adding variables: uy
+Adding variables: ux
+Adding variables: uz
+Adding variables: beta
+Adding variables: mu
+Adding variables: p
+Adding variables: u
+Adding variables: w
+Adding variables: v
+Adding variables: Et
+Adding variables: div
+Adding variables: gamma
+Adding equations of motion: 
+(1)   ddt(:rho:)  =  -ddx(:rho:*:u:)            - ddy(:rho:*:v:)               - ddz(:rho:*:w:)
+(2)   ddt(:rhou:) =  -ddx(:rhou:*:u: - :tauxx:) - ddy(:rhou:*:v: - :tauxy:)    - ddz(:rhou:*:w: - :tauxz:)
+(3)   ddt(:rhov:) =  -ddx(:rhov:*:u: - :tauxy:) - ddy(:rhov:*:v: - :tauyy:)    - ddz(:rhov:*:w: - :tauyz:)
+(4)   ddt(:rhow:) =  -ddx(:rhow:*:u: - :tauxz:) - ddy(:rhow:*:v: - :tauyz:)    - ddz(:rhow:*:w: - :tauzz:)
+(5)   ddt(:Et:)   =  -ddx( (:Et: - :tauxx:)*:u: - :tauxy:*:v: - :tauxz:*:w: )  - ddy( (:Et: - :tauyy:)*:v: -:tauxy:*:u: - :tauyz:*:w:) - ddz( (:Et: - :tauzz:)*:w: - :tauxz:*:u: - :tauyz:*:v: )
+(6)   :rho:       =  fbar( :rho:  )
+(7)   :rhou:      =  fbar( :rhou: )
+(8)   :rhov:      =  fbar( :rhov: )
+(9)   :rhow:      =  fbar( :rhow: )
+(10)   :Et:        =  fbar( :Et:   )
+(11)   :u:         =  :rhou: / :rho:
+(12)   :v:         =  :rhov: / :rho:
+(13)   :w:         =  :rhow: / :rho:
+(14)   :p:         =  ( :Et: - .5*:rho:*(:u:*:u: + :v:*:v: + :w:*:w:) ) * ( :gamma: - 1.0 )
+(15)   :ux:        =  ddx(:u:)
+(16)   :vy:        =  ddy(:v:)
+(17)   :wz:        =  ddz(:w:)
+(18)   :div:       =  :ux: + :vy: + :wz:
+(19)   :uy:        =  ddy(:u:)
+(20)   :uz:        =  ddz(:u:)
+(21)   :vx:        =  ddx(:v:)
+(22)   :vz:        =  ddz(:v:)
+(23)   :wy:        =  ddy(:w:)
+(24)   :wx:        =  ddx(:w:)
+(25)   :enst:      = sqrt( (:uy:-:vx:)**2 + (:uz: - :wx:)**2 + (:vz:-:wy:)**2 )
+(26)   :tke:       = :rho:*(:u:*:u: + :v:*:v: + :w:*:w:)
+(27)   :S:         = sqrt( :ux:*:ux: + :vy:*:vy: + :wz:*:wz: + .5*((:uy:+:vx:)**2 + (:uz: + :wx:)**2 + (:vz:+:wy:)**2) )
+(28)   :mu:        =  gbar( abs(ring(:S:  )) ) * :rho: * 1.0e-4
+(29)   :beta:      =  gbar( abs(ring(:div:)) * :rho: )  * 7.0e-3
+(30)   :taudia:    =  (:beta:-2./3.*:mu:) *:div: - :p:
+(31)   :tauxx:     =  2.0*:mu:*:ux:   + :taudia:
+(32)   :tauyy:     =  2.0*:mu:*:vy:   + :taudia:
+(33)   :tauzz:     =  2.0*:mu:*:wz:   + :taudia:
+(34)   :tauxy:     = :mu:*(:uy:+:vx:)
+(35)   :tauxz:     = :mu:*(:uz:+:wx:)
+(36)   :tauyz:     = :mu:*(:vz:+:wz:)
+(37)   :cs:  = sqrt( :p: / :rho: * :gamma: )
+(38)   :dt: = dt.courant(:u:,:v:,:w:,:cs:)*1.0
+(39)   :dt: = numpy.minimum(:dt:,0.2 * dt.diff(:beta:,:rho:))
+(40)   :dt: = numpy.minimum(:dt:,0.2 * dt.diff(:mu:,:rho:))
+1 -- 0.007655094827138741 --- TKE: 0.9999993646363983 
+[MO833] Paramount Iteration,0,1,3.32752895355,0.243901014328
+[MO833] Paramount Iteration,1,1,3.32292795181,0.243870019913
+2 -- 0.015310142199369959 --- TKE: 0.9999987436296092 
+[MO833] Paramount Iteration,0,2,3.55556583405,0.228036880493
+[MO833] Paramount Iteration,1,2,3.55096578598,0.228037834167
+3 -- 0.022965147451105457 --- TKE: 0.9999981421825569 
+[MO833] Paramount Iteration,0,3,3.77403092384,0.218465089798
+[MO833] Paramount Iteration,1,3,3.76943182945,0.218466043472
+4 -- 0.030620096953061036 --- TKE: 0.9999975662694897 
+[MO833] Paramount Iteration,0,4,3.99246001244,0.218429088593
+[MO833] Paramount Iteration,1,4,3.9878590107,0.218427181244
+5 -- 0.03827498948310118 --- TKE: 0.9999970196181792 
+[MO833] Paramount Iteration,0,5,4.21140694618,0.218946933746
+[MO833] Paramount Iteration,1,5,4.20680689812,0.218947887421
+6 -- 0.045929828917241074 --- TKE: 0.9999965015726417 
+[MO833] Paramount Iteration,0,6,4.43121790886,0.219810962677
+[MO833] Paramount Iteration,1,6,4.42662477493,0.219817876816
+7 -- 0.053584623927919316 --- TKE: 0.999996006416409 
+[MO833] Paramount Iteration,0,7,4.65054583549,0.219327926636
+[MO833] Paramount Iteration,1,7,4.64595580101,0.219331026077
+8 -- 0.06123938717768497 --- TKE: 0.9999955244578074 
+[MO833] Paramount Iteration,0,8,4.86924004555,0.218694210052
+[MO833] Paramount Iteration,1,8,4.86464381218,0.218688011169
+9 -- 0.06889413415363722 --- TKE: 0.999995045271384 
+[MO833] Paramount Iteration,0,9,5.08779382706,0.218553781509
+[MO833] Paramount Iteration,1,9,5.08320498466,0.218561172485
+10 -- 0.0765488817987252 --- TKE: 0.9999945610579936 
+[MO833] Paramount Iteration,0,10,5.30936694145,0.221573114395
+[MO833] Paramount Iteration,1,10,5.30476999283,0.221565008163
+11 -- 0.08420364711032531 --- TKE: 0.99999406941486 
+[MO833] Paramount Iteration,0,11,5.52912688255,0.219759941101
+[MO833] Paramount Iteration,1,11,5.52453684807,0.21976685524
+12 -- 0.09185844586135747 --- TKE: 0.9999935746748495 
+[MO833] Paramount Iteration,0,12,5.7486448288,0.219517946243
+[MO833] Paramount Iteration,1,12,5.74405097961,0.219514131546
+13 -- 0.09951329156975813 --- TKE: 0.9999930874211382 
+[MO833] Paramount Iteration,0,13,5.96712303162,0.21847820282
+[MO833] Paramount Iteration,1,13,5.96253395081,0.218482971191
+14 -- 0.10716819479716114 --- TKE: 0.9999926222602611 
+[MO833] Paramount Iteration,0,14,6.18535089493,0.218227863312
+[MO833] Paramount Iteration,1,14,6.18075990677,0.218225955963
+15 -- 0.11482316280474508 --- TKE: 0.9999921946937707 
+[MO833] Paramount Iteration,0,15,6.40386795998,0.218517065048
+[MO833] Paramount Iteration,1,15,6.39928293228,0.218523025513
+16 -- 0.1224781830182858 --- TKE: 0.9999918180567688 
+[MO833] Paramount Iteration,0,16,6.62259292603,0.218724966049
+[MO833] Paramount Iteration,1,16,6.6179959774,0.21871304512
+17 -- 0.13013320956907973 --- TKE: 0.9999915012634162 
+[MO833] Paramount Iteration,0,17,6.8408229351,0.218230009079
+[MO833] Paramount Iteration,1,17,6.83623480797,0.218238830566
+18 -- 0.1377882450829289 --- TKE: 0.999991248059914 
+[MO833] Paramount Iteration,0,18,7.05874300003,0.217920064926
+[MO833] Paramount Iteration,1,18,7.05416178703,0.217926979065
+19 -- 0.14544329426107994 --- TKE: 0.999991057727796 
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 1 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+An MPI communication peer process has unexpectedly disconnected.  This
+usually indicates a failure in the peer process (e.g., a crash or
+otherwise exiting without calling MPI_FINALIZE first).
+
+Although this local MPI process will likely now behave unpredictably
+(it may even hang or crash), the root cause of this problem is the
+failure of the peer -- that is what you need to investigate.  For
+example, there may be a core file that you can examine.  More
+generally: such peer hangups are frequently caused by application bugs
+or other external events.
+
+  Local host: ip-172-31-49-171
+  Local PID:  11735
+  Peer host:  ip-172-31-51-20
+--------------------------------------------------------------------------

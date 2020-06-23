@@ -1,0 +1,26 @@
+[ip-172-31-51-239:11572] 1 more process has sent help message help-mpi-btl-base.txt / btl:no-nics
+[ip-172-31-51-239:11572] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/home/ubuntu/pyranda/util/mpi4py-3.0.0/install_location_mpi4py/lib/python2.7/site-packages/mpi4py/__main__.py", line 7, in <module>
+    main()
+  File "/home/ubuntu/pyranda/util/mpi4py-3.0.0/install_location_mpi4py/lib/python2.7/site-packages/mpi4py/run.py", line 196, in main
+    run_command_line(args)
+  File "/home/ubuntu/pyranda/util/mpi4py-3.0.0/install_location_mpi4py/lib/python2.7/site-packages/mpi4py/run.py", line 47, in run_command_line
+    run_path(sys.argv[0], run_name='__main__')
+  File "/usr/lib/python2.7/runpy.py", line 252, in run_path
+    return _run_module_code(code, init_globals, run_name, path_name)
+  File "/usr/lib/python2.7/runpy.py", line 82, in _run_module_code
+    mod_name, mod_fname, mod_loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "TaylorGreen.py", line 190, in <module>
+    ss.write()
+  File "/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyranda.py", line 410, in write
+    self.PyIO.makeDumpVTK(self.mesh,self.variables,wVars,dumpFile)
+  File "/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages/pyranda/pyrandaIO.py", line 71, in makeDumpVTK
+    fid = open(dumpFile + '.vtk','w')
+IOError: [Errno 2] No such file or directory: 'TGvortex/vis00019/proc-00001.00019.vtk'

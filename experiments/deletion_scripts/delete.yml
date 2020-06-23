@@ -1,0 +1,52 @@
+---
+- name: "Placement group, Secutiry group and EFS playbook"
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: "Delete placement group in ec2 us-east-1"
+      ec2_placement_group:
+        aws_access_key: "{{ lookup('file', pub_key) }}"
+        aws_secret_key: "{{ lookup('file', pem_key) }}"
+        state: "absent"
+        region: "us-east-1"
+        name: "{{ pg_name }}"
+        strategy: "{{ pg_strategy }}"
+      register: "resultado_da_criacao"
+
+    - name: "Delete EFS"
+      efs:
+        state: "absent"
+        name: "{{ efs_name }}"
+        region: "us-east-1"
+        aws_access_key: "{{ lookup('file', pub_key) }}"
+        aws_secret_key: "{{ lookup('file', pem_key) }}"
+      register: "resultado_da_criacao"
+
+    - name: "Print creation results dictionary"
+      debug:
+        msg: "{{ resultado_da_criacao }}"
+
+    - name: "Delete security group in ec2 us-east-1"
+      ec2_group:
+        aws_access_key: "{{ lookup('file', pub_key) }}"
+        aws_secret_key: "{{ lookup('file', pem_key) }}"
+        region: "us-east-1"
+        name: "{{ sg_name }}"
+        state: "absent"
+        description: "Cluster Security group"
+        rules:
+        - proto: tcp
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+        - proto: all
+          group_name: "{{ sg_name }}"
+          ports:
+            - 50
+            - 100
+      register: "resultado_sg"
+
+    - name: "Print creation results dictionary"
+      debug:
+        msg: "{{ resultado_sg }}"

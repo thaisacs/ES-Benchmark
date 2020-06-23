@@ -4,7 +4,7 @@ placement_group:
 security_group:
   name: mpi-group-sg-thais
 efs:
-  name: efs-thais
+  name: efs-thais-pyranda
   tag: efs-tag-thais
 pub_key: ~/.clap/private/mo833-3.pub
 pem_key: ~/.clap/private/mo833-3.pem
