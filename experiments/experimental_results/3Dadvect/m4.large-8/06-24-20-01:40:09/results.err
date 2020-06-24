@@ -1,0 +1,25 @@
+Warning: Permanently added '172.31.73.129' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.68.158' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.70.230' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.70.30' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.69.96' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.65.141' (ECDSA) to the list of known hosts.
+Warning: Permanently added '172.31.65.77' (ECDSA) to the list of known hosts.
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+3Dadvect.py:174: RuntimeWarning: divide by zero encountered in double_scalars
+  enst = ss.var('enst').sum()/enst0
+[ip-172-31-70-125:11559] 7 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[ip-172-31-70-125:11559] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

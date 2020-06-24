@@ -26,7 +26,7 @@ for ((i=5; i<len; i++)); do
   results_dir=${dest}/experimental_results/${args[$i]}/${type_vm}-${num_vm}/${now}/$(date +"%m-%d-%y-%T")
   mkdir -p ${results_dir}
   clapp cluster action ${cluster_id} ${bench_name}-group run --extra "app_name=${args[$i]}" "num_np=${num_vm}" -vvv
-  clapp cluster action ${cluster_id} ${bench_name}-group fetch-results --extra "dir=${dest}"
+  clapp cluster action ${cluster_id} ${bench_name}-group fetch-results --extra "dir=${dest}/execution-scripts"
   results=node-*/home/ubuntu/*/experiments/results/*
   mv ${results} ${results_dir}
 done

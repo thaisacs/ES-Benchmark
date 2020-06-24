@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir charts
+mkdir -p charts
 cd ../experimental_results
 path=$PWD
 
@@ -16,5 +16,6 @@ for app in *; do
       done
     done
   done
-  python3 ../charts-csv-scripts/chart.py $app $apps
+  python3 ../charts-csv-scripts/util/chart.py $app $apps
+  python3 ../charts-csv-scripts/util/chart-2.py $app $apps
 done
