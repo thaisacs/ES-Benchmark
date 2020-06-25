@@ -1,0 +1,67 @@
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Perform simulation setup
+    debug:
+      msg: simulation-setup action called!
+
+  - name: Create efs directory
+    become: no
+    file:
+      path: "~/efs"
+      state: directory
+      mode: 0755
+
+  - name: Mount efs repository
+    become: yes
+    shell: "mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport
+    {{ efs_ip }}:/ efs"
+
+  - name: Copy repository
+    become: no
+    shell: "cp -r ~/efs/pyranda ~/"
+
+  - name: Create experiment directory
+    become: no
+    file:
+      path: "~/pyranda/experiments/results"
+      state: directory
+      mode: 0755
+
+  - name: Install Python dependencies
+    shell: "pip install -r ~/pyranda/requirements.txt"
+
+  - name: Copy private SSH KEY
+    copy:
+      src: ~/.clap/private/id_rsa
+      dest: ~/.ssh
+
+  - name: Copy public SSH KEY
+    copy:
+      src: ~/.clap/private/id_rsa.pub
+      dest: ~/.ssh
+
+  - name: Add rsa-key in authorized_keys
+    shell: "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys"
+
+  - name: Execute chmod 600
+    become: true
+    shell: "chmod 600 /home/ubuntu/.ssh/id_rsa && chmod 600 /home/ubuntu/.ssh/id_rsa.pub"
+
+  - name: StrictHostKeyChecking not necessary
+    shell: "touch ~/.ssh/config && echo 'Host * \n    StrictHostKeyChecking no' >> ~/.ssh/config"
+
+  - name: Create hosts file
+    file:
+      path: ~/pyranda/examples/hostfile
+      state: touch
+
+  - name: Add Ansible inventory mappings
+    blockinfile:
+      marker: ""
+      path: ~/pyranda/examples/hostfile
+      block: |
+        {% for host in groups['all'] %}
+        {{ hostvars[host].ansible_default_ipv4.address }} slots=1
+        {% endfor %}

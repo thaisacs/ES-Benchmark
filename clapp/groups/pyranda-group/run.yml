@@ -1,0 +1,16 @@
+---
+- hosts: leader
+  gather_facts: yes
+
+  environment:
+    PYTHONPATH: /home/ubuntu/pyranda/util/mpi4py-3.0.0/install_location_mpi4py/lib/python2.7/site-packages:/home/ubuntu/pyranda/install_location_pyranda/lib/python2.7/site-packages:/home/ubuntu/pyranda/kernel_stats
+    MYPATH: /home/ubuntu/pyranda/experiments
+
+  tasks:
+  - name: Perform execution
+    debug:
+      msg: run action called!
+
+  - name: Run
+    shell: "cd ~/pyranda/examples && /usr/bin/time -o $MYPATH/results/results.time -p mpiexec --hostfile hostfile -n {{ num_np }}
+    -x PYTHONPATH python -m mpi4py {{ app_name }}.py 1> $MYPATH/results/results.out 2> $MYPATH/results/results.err"

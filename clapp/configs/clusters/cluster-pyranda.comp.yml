@@ -1,0 +1,40 @@
+setups:
+  config-my-pyranda.comp:
+    groups:
+    - name: pyranda.comp-group
+    actions:
+    - type: action
+      name: compile
+      group: pyranda.comp-group
+      extra:
+        efs_ip: "{{ efs_ip }}"
+
+clusters:
+  cluster-pyranda.comp-t2.micro-2x:
+    nodes:
+      node:
+        type: type-t2.micro
+        count: 1
+        setups:
+        - config-my-pyranda.comp
+  cluster-pyranda.comp-t3.large:
+    nodes:
+      node:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-pyranda.comp
+  cluster-pyranda.comp-m4.large:
+    nodes:
+      node:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-pyranda.comp
+  cluster-pyranda.comp-m5.large:
+    nodes:
+      node:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-pyranda.comp

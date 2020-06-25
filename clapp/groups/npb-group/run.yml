@@ -1,0 +1,12 @@
+---
+- hosts: leader
+  gather_facts: yes
+
+  tasks:
+  - name: Perform execution
+    debug:
+      msg: run action called!
+
+  - name: Run
+    shell: "cd ~/NPB3.4-MPI/experiments && /usr/bin/time -o results/results.time -p mpirun --hostfile hostfile -np {{ num_np }} ../bin/{{ app_name }}.x
+    1> results/results.out 2> results/results.err"

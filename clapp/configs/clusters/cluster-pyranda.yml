@@ -1,0 +1,153 @@
+setups:
+  config-my-worker:
+    groups:
+    - name: pyranda-group/worker
+
+  config-my-leader:
+    groups:
+    - name: pyranda-group/leader
+
+  config-my-after-all:
+    actions:
+    - type: action
+      name: simulation-setup
+      group: pyranda-group
+      extra:
+        efs_ip: "{{ efs_ip }}"
+
+clusters:
+  cluster-pyranda-t2.micro-2x:
+    nodes:
+      leader:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-t3.large-2x:
+    nodes:
+      worker:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-worker
+      leader:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-t3.large-4x:
+    nodes:
+      worker:
+        type: type-t3.large
+        count: 3
+        setups:
+        - config-my-worker
+      leader:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-t3.large-8x:
+    nodes:
+      worker:
+        type: type-t3np.large
+        count: 7
+        setups:
+        - config-my-worker
+      leader:
+        type: type-t3np.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-m5.large-2x:
+    nodes:
+      worker:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-worker
+      leader:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-m5.large-4x:
+    nodes:
+      worker:
+        type: type-m5.large
+        count: 3
+        setups:
+        - config-my-worker
+      leader:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-m5.large-8x:
+    nodes:
+      worker:
+        type: type-m5.large
+        count: 7
+        setups:
+        - config-my-worker
+      leader:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-m4.large-2x:
+    nodes:
+      worker:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-worker
+      leader:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-m4.large-4x:
+    nodes:
+      worker:
+        type: type-m4.large
+        count: 3
+        setups:
+        - config-my-worker
+      leader:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all
+  cluster-pyranda-m4.large-8x:
+    nodes:
+      worker:
+        type: type-m4.large
+        count: 7
+        setups:
+        - config-my-worker
+      leader:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-leader
+    after_all:
+    - config-my-after-all

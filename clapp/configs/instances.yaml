@@ -1,0 +1,36 @@
+type-t2.micro:
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: t2.micro
+    image_id: ami-085925f297f89fce1
+
+type-t3.large:
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: t3.large
+    image_id: ami-085925f297f89fce1
+    security_group: mpi-group-sg-thais
+    placement_group: mpi-group-pg-thais
+
+type-t3np.large:
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: t3.large
+    image_id: ami-085925f297f89fce1
+    security_group: mpi-group-sg-thais
+
+type-m5.large:
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: m5.large
+    image_id: ami-085925f297f89fce1
+    security_group: mpi-group-sg-thais
+    placement_group: mpi-group-pg-thais
+
+type-m4.large:
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: m4.large
+    image_id: ami-085925f297f89fce1
+    security_group: mpi-group-sg-thais
+    placement_group: mpi-group-pg-thais

@@ -1,0 +1,13 @@
+---
+- hosts: leader
+  gather_facts: yes
+  tasks:
+  - name: Perform fetch results
+    debug:
+      msg: fetch action called!
+
+  - find: paths="~/pyranda/experiments/results/" recurse=no patterns="*"
+    register: files_to_copy
+
+  - fetch: src={{ item.path }} dest="{{ dir }}"
+    with_items: "{{ files_to_copy.files }}"

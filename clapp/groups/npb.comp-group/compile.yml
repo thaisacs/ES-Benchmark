@@ -1,0 +1,27 @@
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Perform setup
+    debug:
+      msg: setup action called!
+
+  - name: Create efs repository
+    become: no
+    file:
+      path: "~/efs"
+      state: directory
+      mode: 0755
+
+  - name: Create efs repository
+    become: yes
+    shell: "mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport
+    {{ efs_ip }}:/ /home/ubuntu/efs"
+
+  - name: Get repository
+    become: yes
+    shell: "cd /home/ubuntu/efs && git clone https://github.com/thaisacs/NPB3.4-MPI"
+
+  - name: Run ./script-build.sh
+    become: yes
+    shell: "cd /home/ubuntu/efs/NPB3.4-MPI/experiments && ./script-build.sh"

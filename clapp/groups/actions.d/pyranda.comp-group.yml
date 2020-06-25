@@ -1,0 +1,11 @@
+---
+actions:
+  setup:
+    playbook: pyranda.comp-group/setup.yml
+    description: Configura a máquina virtual com todas as bibliotecas necessárias e compila o PYRANDA
+
+  compile:
+    playbook: pyranda.comp-group/compile.yml
+    description: Compile NPB
+    vars:
+    - name: efs_ip

@@ -1,0 +1,32 @@
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Perform setup
+    debug:
+      msg: setup action called!
+
+  - name: "Ensure that packages are updated"
+    become: yes
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: Install module dependencies
+    become: yes
+    apt:
+      pkg:
+        - wget
+        - libgfortran3
+        - make
+        - gcc
+        - sysstat
+        - libibnetdisc-dev
+        - openmpi-bin
+        - libopenmpi-dev
+        - libhdf5-openmpi-dev
+        - gfortran
+        - build-essential
+        - git
+        - cmake
+        - nfs-common

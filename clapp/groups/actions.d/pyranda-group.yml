@@ -1,0 +1,28 @@
+---
+actions:
+  setup:
+    playbook: pyranda-group/setup.yml
+    description: Configura a máquina virtual com todas as bibliotecas necessárias
+
+  simulation-setup:
+    playbook: pyranda-group/simulation-setup.yml
+    description: Gera os arquivos necessários para a simulação
+    vars:
+      - name: efs_ip
+
+  run:
+    playbook: pyranda-group/run.yml
+    description: Run PYRANDA
+    vars:
+      - name: app_name
+      - name: num_np
+
+  fetch-results:
+    playbook: pyranda-group/fetch-results.yml
+    description: Get results
+    vars:
+      - name: dir
+
+hosts:
+  - leader
+  - worker

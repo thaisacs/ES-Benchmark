@@ -1,0 +1,40 @@
+setups:
+  config-my-npb.comp:
+    groups:
+    - name: npb.comp-group
+    actions:
+    - type: action
+      name: compile
+      group: npb.comp-group
+      extra:
+        efs_ip: "{{ efs_ip }}"
+
+clusters:
+  cluster-npb.comp-t2.micro:
+    nodes:
+      node:
+        type: type-t2.micro
+        count: 1
+        setups:
+        - config-my-npb.comp
+  cluster-npb.comp-t3.large:
+    nodes:
+      node:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-npb.comp
+  cluster-npb.comp-m4.large:
+    nodes:
+      node:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-npb.comp
+  cluster-npb.comp-m5.large:
+    nodes:
+      node:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-npb.comp

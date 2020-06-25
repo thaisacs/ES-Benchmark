@@ -1,0 +1,26 @@
+---
+actions:
+  setup:
+    playbook: npb-group/setup.yml
+    description: Configura a máquina virtual com todas as bibliotecas necessárias e instala o NPB
+
+  simulation-setup:
+    playbook: npb-group/simulation-setup.yml
+    description: Gera os arquivos necessários para a simulação
+
+  run:
+    playbook: npb-group/run.yml
+    description: Run NPB
+    vars:
+    - name: app_name
+    - name: num_np
+
+  fetch-results:
+    playbook: npb-group/fetch-results.yml
+    description: Get results
+    vars:
+    - name: dir
+
+hosts:
+  - leader
+  - worker

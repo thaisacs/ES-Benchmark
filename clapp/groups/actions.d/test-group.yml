@@ -1,0 +1,9 @@
+---
+actions:
+  setup:
+    playbook: test-group/setup.yml
+    description: Configura a máquina virtual com todas as bibliotecas necessárias e instala o NPB
+
+hosts:
+  - leader
+  - worker

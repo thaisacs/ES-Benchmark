@@ -1,0 +1,44 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: Perform setup
+    debug:
+      msg: setup action called!
+
+  - name: "Ensure that packages are updated"
+    become: yes
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: Install module dependencies
+    become: yes
+    apt:
+      pkg:
+        - make
+        - gfortran
+        - git
+        - cmake
+        - python
+        - python-tk
+        - python-pip
+        - wget
+        - libgfortran3
+        - make
+        - gcc
+        - sysstat
+        - libibnetdisc-dev
+        - openmpi-bin
+        - libopenmpi-dev
+        - libhdf5-openmpi-dev
+        - gfortran
+        - build-essential
+
+  - include_role:
+      name: nfs-client
+      tasks_from: setup
+
+  - include_role:
+      name: ec2-efs

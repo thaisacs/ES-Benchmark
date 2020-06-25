@@ -1,0 +1,158 @@
+setups:
+  config-my-npb-worker:
+    groups:
+    - name: npb-group/worker
+
+  config-my-npb-leader:
+    groups:
+    - name: npb-group/leader
+
+  config-my-npb-after-all:
+    actions:
+    - type: action
+      name: simulation-setup
+      group: npb-group
+      extra:
+        efs_ip: "{{ efs_ip }}"
+
+clusters:
+  cluster-npb-t2.micro-2x:
+    nodes:
+      worker:
+        type: type-t2.micro
+        count: 1
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-t2.micro
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-t3.large-2x:
+    nodes:
+      worker:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-t3.large-8x:
+    nodes:
+      worker:
+        type: type-t3np.large
+        count: 7
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-t3np.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-t3.large-4x:
+    nodes:
+      worker:
+        type: type-t3.large
+        count: 3
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-t3.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-m4.large-2x:
+    nodes:
+      worker:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-m4.large-4x:
+    nodes:
+      worker:
+        type: type-m4.large
+        count: 3
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-m4.large-8x:
+    nodes:
+      worker:
+        type: type-m4.large
+        count: 8
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-m4.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-m5.large-2x:
+    nodes:
+      worker:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-m5.large-4x:
+    nodes:
+      worker:
+        type: type-m5.large
+        count: 3
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all
+  cluster-npb-m5.large-8x:
+    nodes:
+      worker:
+        type: type-m5.large
+        count: 7
+        setups:
+        - config-my-npb-worker
+      leader:
+        type: type-m5.large
+        count: 1
+        setups:
+        - config-my-npb-leader
+    after_all:
+    - config-my-npb-after-all

@@ -1,0 +1,11 @@
+---
+actions:
+  setup:
+    playbook: npb.comp-group/setup.yml
+    description: Configura a máquina virtual com todas as bibliotecas necessárias e compila o NPB
+
+  compile:
+    playbook: npb.comp-group/compile.yml
+    description: Compile NPB
+    vars:
+    - name: efs_ip
