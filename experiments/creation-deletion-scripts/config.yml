@@ -1,6 +1,6 @@
 placement_group:
   name: mpi-group-pg-thais
-  strategy: cluster # {cluster, spread}
+  strategy: spread # {cluster, spread}
 security_group:
   name: mpi-group-sg-thais
 efs:

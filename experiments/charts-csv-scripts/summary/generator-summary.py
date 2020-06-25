@@ -7,7 +7,7 @@ def echo_head():
     os.system(cmd)
 
 def echo_new_line(test_case, cfg, date, time, main, beta, avg, n, first, second, avg1, avg2):
-    cmd = 'echo ' + test_case + ',' + cfg + ',' + date + ',' + time + ',' + main + ',' + beta + ',' + str(avg) + ',' + str(n) + ',' + str(first) + ',' + str(second) + ',' + str(avg1) + ',' + str(avg2) + ' >> ' + filename
+    cmd = 'echo ' + test_case + ',' + cfg + ',' + date + ',' + time + ',' + main + ',' + beta + ',' + avg + ',' + n + ',' + first + ',' + second + ',' + avg1 + ',' + avg2 + ' >> ' + filename
     os.system(cmd)
 
 def run():
@@ -29,9 +29,11 @@ def run():
                 filename_split = filename.split('.')
                 subdir_split = subdir.split('/')
 
-                test_case = subdir_split[2]
-                cfg = subdir_split[3]
-                date = subdir_split[4]
+                test_case = subdir_split[3]
+                cfg = subdir_split[4]
+                date = subdir_split[5]
+
+                print('{} {} {}'.format(test_case, cfg, date))
 
                 if(filename_split[len(filename_split)-1] == 'out'):
                     file = open(filepath, "r")
@@ -114,11 +116,11 @@ def run():
                 elif(filename_split[len(filename_split)-1] == 'err'):
                     file = open(filepath, "r")
                     lines = file.readlines()
-                    for line in lines:
-                        if('wall clock' in line):
-                            line_split = line.split(' ')
-                            time_string = line_split[len(line_split)-1]
-                            time = time_string.replace('\n', '')
+                    #for line in lines:
+                    #    if('wall clock' in line):
+                    #        line_split = line.split(' ')
+                    #        time_string = line_split[len(line_split)-1]
+                    #        time = time_string.replace('\n', '')
                 elif(filename_split[len(filename_split)-1] == 'time'):
                     file = open(filepath, "r")
                     lines = file.readlines()
@@ -129,7 +131,7 @@ def run():
             if(write):
                 avg1 = avg1/5
                 avg2 = avg2/10
-                echo_new_line(test_case, cfg, date, time, main, beta, avg, n, first, second, avg1, avg2)
+                echo_new_line(test_case, cfg, date, time, main, str(beta), str(avg), str(n), str(first), str(second), str(avg1), str(avg2))
 
 def main():
     echo_head()

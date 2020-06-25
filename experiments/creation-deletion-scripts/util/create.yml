@@ -11,7 +11,7 @@
         region: "us-east-1"
         name: "{{ pg_name }}"
         strategy: "{{ pg_strategy }}"
-      register: "resultado_da_criacao"
+      register: "result"
 
     - name: "Create security group in ec2 us-east-1"
       ec2_group:
@@ -31,12 +31,7 @@
           ports:
             - 50
             - 100
-
-      register: "resultado_sg"
-
-    - name: "Print creation results dictionary"
-      debug:
-        msg: "{{ resultado_sg }}"
+      register: "result_sg"
 
     - name: "Create EFS"
       efs:
@@ -50,9 +45,9 @@
           purpose: "file-storage"
         targets:
           - subnet_id: "subnet-bbe700dc"
-            security_groups: [ "{{ resultado_sg.group_id }}" ]
-      register: "resultado_da_criacao"
+            security_groups: [ "{{ result_sg.group_id }}" ]
+      register: "result"
 
     - name: "Print creation results dictionary"
       debug:
-        msg: "{{ resultado_da_criacao }}"
+        msg: "EFS IP: {{ result.efs.mount_targets[0].ip_address }}"

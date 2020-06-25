@@ -1,9 +1,9 @@
-benchmark: pyranda
-vm_type: m4.large
+benchmark: npb
+vm_type: t3.large
 nodes: 4
 apps:
-  - 3Dadvect
-  - gatech
+  #  - 3Dadvect
+  - bt.B
 efs_ip: 172.31.15.117
 dir: "~/Dev/ES-Benchmark/experiments/"
 # dir é ocaminho até a pasta ES-Benchmark/experiments
