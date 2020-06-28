@@ -12,7 +12,7 @@ values = []
 x = [1, 2, 4, 8]
 
 def read_output(filename):
-    with open(filename, 'r') as file:
+    with open('info/'+filename, 'r') as file:
         reader = csv.reader(file, delimiter = '\n')
         for row in reader:
             values.append(float(row[0]))
@@ -22,8 +22,7 @@ def calculate():
         values[i] = values[0]/values[i]
     values[0] = 1
 
-with PdfPages('multipage_pdf.pdf') as pdf:
-    #plt.figure(figsize=(3, 3))
+with PdfPages('speedup.pdf') as pdf:
     for app in npb:
         read_output(str(app))
         calculate()
@@ -37,13 +36,13 @@ with PdfPages('multipage_pdf.pdf') as pdf:
         string = app.split('.')
         plt.plot(x, values, label=string[0])
         values = []
-    
+
     plt.plot([1, 2, 4, 8], [1, 2, 4, 8], 'k--', label='ideal')
 
     plt.title('NPB e Pyranda')
-    plt.xlabel('Processos MPI')
+    plt.xlabel('Processos MPI #')
     plt.ylabel('Speedup')
-    plt.legend(loc="best")
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.12), fancybox=True, shadow=True, ncol=5)
+    plt.tight_layout()
     plt.grid(True)
     pdf.savefig()
-    #plt.savefig("teste.png", dpi=150)

@@ -16,6 +16,6 @@ for app in *; do
       done
     done
   done
+  python3 ../charts-csv-scripts/util/chart-relative.py $app $apps
   python3 ../charts-csv-scripts/util/chart.py $app $apps
-  python3 ../charts-csv-scripts/util/chart-2.py $app $apps
 done

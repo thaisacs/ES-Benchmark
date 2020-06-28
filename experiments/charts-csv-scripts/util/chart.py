@@ -6,13 +6,10 @@ import sys
 
 from matplotlib.backends.backend_pdf import PdfPages
 
-matplotlib.pyplot.figure(figsize=(15,15))
+matplotlib.pyplot.figure(figsize=(10,6))
 
 paramount_iteration = {}
 labels = []
-
-results_all_m = {}
-results_all_d = {}
 
 def read_output(filename):
     name_split = filename.split('/')
@@ -69,33 +66,10 @@ def my_plot(results, label_index):
             d.append(statistics.stdev(results[i]))
         x.append(i+1)
 
-    #matplotlib.pyplot.errorbar(x, m, d, label=labels[label_index])
-    results_all_m[label_index] = m
-    results_all_d[label_index] = d
+    matplotlib.pyplot.errorbar(x, m, d, label=labels[label_index])
 
-def my_plot_relative():
-    menor = 1000000
-    index = -1
-    m = []
-    d = []
-    x = []
 
-    for i in results_all_m:
-        if(menor > statistics.mean(results_all_m[i])):
-            menor = statistics.mean(results_all_m[i])
-            index = i
-
-    for i in results_all_m:
-        for j in range(0, len(results_all_m[i])):
-            m.append(results_all_m[i][j]/results_all_m[index][j])
-            d.append(results_all_d[i][j])
-            x.append(j+1)
-        matplotlib.pyplot.errorbar(x, m, d, label=labels[i])
-        m = []
-        d = []
-        x = []
-
-with PdfPages('../charts-csv-scripts/charts/'+sys.argv[1]+'-relative.pdf') as pdf:
+with PdfPages('../charts-csv-scripts/charts/'+sys.argv[1]+'.pdf') as pdf:
     for i in sys.argv[2:len(sys.argv)]:
         labels.append(i.split('/')[1])
         read_output(i)
@@ -109,10 +83,11 @@ with PdfPages('../charts-csv-scripts/charts/'+sys.argv[1]+'-relative.pdf') as pd
     labels = labels_clean
 
     make_array(paramount_iteration)
-    my_plot_relative()
+
     matplotlib.pyplot.title(sys.argv[1])
-    matplotlib.pyplot.xlabel('Iteração')
+    matplotlib.pyplot.xlabel('Iteração #')
     matplotlib.pyplot.ylabel('Tempo de Execução (s)')
-    matplotlib.pyplot.legend(loc="best")
+    matplotlib.pyplot.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1), fancybox=True, shadow=True, ncol=5)
+    matplotlib.pyplot.tight_layout()
     matplotlib.pyplot.grid(True)
     pdf.savefig()
