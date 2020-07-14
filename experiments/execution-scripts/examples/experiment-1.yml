@@ -1,5 +1,5 @@
 benchmark: npb
-vm_type: t3np.large
+vm_type: t3.large
 nodes: 8
 apps:
   - bt.B

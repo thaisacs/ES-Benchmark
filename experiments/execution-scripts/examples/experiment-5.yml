@@ -1,0 +1,8 @@
+benchmark: pyranda
+vm_type: t3.large
+nodes: 2
+apps:
+  - gatech
+  - 3Dadvect
+efs_ip: 172.31.15.117
+dir: "~/Dev/ES-Benchmark/experiments/scripts"

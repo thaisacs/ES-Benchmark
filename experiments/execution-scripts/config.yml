@@ -2,9 +2,14 @@ benchmark: npb
 vm_type: t3.large
 nodes: 4
 apps:
-  #  - 3Dadvect
   - bt.B
+  - bt.C
+  - ft.C
+  - cg.C
+  - sp.B
+  - sp.C
+  - lu.C
 efs_ip: 172.31.15.117
 dir: "~/Dev/ES-Benchmark/experiments/"
-# dir é ocaminho até a pasta ES-Benchmark/experiments
+# dir é o caminho até a pasta ES-Benchmark/experiments
 #    -> resultados irão ser salvos dentro de ES-Benchmark/experiments/experimental_results
