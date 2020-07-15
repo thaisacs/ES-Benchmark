@@ -54,4 +54,5 @@ cd summary
 python3 generator-summary.py
 python3 chart-mean.py
 ```
-
+No diretório examples dentro de experiments/execution-scripts encontra-se todos os config.yml utilizados nos experimentos.
+Para executar todos os experimentos, basta executar um experimento para cada exemplo variando o número de nodes em 2, 4 e 8.
