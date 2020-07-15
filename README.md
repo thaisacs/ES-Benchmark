@@ -18,7 +18,7 @@
  ```
 # Experimentação na Nuvem Computacional
 
-Com o python3, git e CLAP instalados, execute os seguintes comandos:
+Para executar um experimento é necessário possuir o python3, git e CLAP instalados. Depois é necessário configurar o ambiente com os seguintes comandos:
 
 ```
 git clone https://github.com/thaisacs/ES-Benchmark --recursive
