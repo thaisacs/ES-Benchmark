@@ -10,4 +10,4 @@ apps:
   - sp.C
   - lu.C
 efs_ip: 172.31.1.38
-dir: "~/Dev/ES-Benchmark/experiments/scripts"
+dir: "~/Dev/ES-Benchmark/experiments/"
